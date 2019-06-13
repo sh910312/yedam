@@ -45,7 +45,7 @@ public class Student {
 	}
 
 	public String getStudentNo() {
-		return this.studentNo;
+	return this.studentNo;
 	}
 
 	public void setStudentNo(String studentNo) {
