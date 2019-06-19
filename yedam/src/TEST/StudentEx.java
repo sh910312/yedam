@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class StudentEx {
 
 	public static void main(String[] args) {
-		
+/*		
 		System.out.println("============================ 학  생 정 보 ===============================");
 		Student student = new Student("1111\t","홍길동\t","영어\t","1991년 10월 8일");
 		
-		student.StudentInfo();
+	 student.StudentInfo();
 		
  	System.out.println("=======================================================================");
+*/	
 		
 		
 		
@@ -20,15 +21,14 @@ public class StudentEx {
 		
 		
 		
-		
-		
-		/*int num = 10;
+/*		
+		int num = 10;
 		Student student = new Student("1111-111","dsfa","1857");
 		
 		System.out.println(student.getStudentNo());
 		System.out.println(student.getName());
 		System.out.println(student.getMajor());
-		*/
+*/		
 		
 		
 		

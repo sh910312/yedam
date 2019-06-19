@@ -9,8 +9,8 @@ public class ArrayListEx {
 
 	public static void main(String[] args) {
 
-		List<String> list1 = new ArrayList<>(); // Arrays.asList("d", "d", "d"); 
-		List<String> list2 = new LinkedList<>(); // Arrays.asList("d", "d", "d"); 
+		List<String> list = new ArrayList<>(); // Arrays.asList("d", "d", "d"); 
+		List<String> list2 = new LinkedList<>(); 
 
 /*		
 		long startTime;
@@ -46,28 +46,16 @@ public class ArrayListEx {
 		}
 */		
 		
-/*
+
 		list.add("java");
 		list.add("JDSD");
-		list.add("DVDV");
-		list.add("AWF");
-		list.add(2, "java");
+		list.add("1111");
 
-		System.out.println(list.get(4));
+
+		System.out.println(list.get(2));
 		System.out.println();
 
-		for (int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
 		}
-		list.add("database");
-		for (String str : list) {
-			System.out.println(str);
-		}
-		list.remove(4);
-		System.out.println();
-		for (String str : list) {
-			System.out.println(str);
-		}
-*/	}
+	}
 
-}
+

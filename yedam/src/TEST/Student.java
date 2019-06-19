@@ -2,12 +2,12 @@ package TEST;
 
 public class Student {
 	
-	String studentNo;
-	String name;
-	String mojor;
-	String yy;
+//	String studentNo;
+//	String name;
+//	String mojor;
+//	String yy;
 	
-	Student() {} // 생성자 소환하기 위해서 필요함 "Student" 라는 생성자
+//	Student() {} // 생성자 소환하기 위해서 필요함 "Student" 라는 생성자
 	/*
 	  
 	  Student() {} // 생성자를 불러내기 위해 필요함 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ 
@@ -35,7 +35,7 @@ public class Student {
 	  
 	  
 	 */
-	
+/*	
 	Student(String studentNo, String name, String mojor, String yy){
 		
 		this.studentNo = studentNo;
@@ -80,7 +80,7 @@ public class Student {
 		System.out.println("학번 : "+studentNo+"이름 : "+name+"전공 : "+mojor+"생년월일 : "+yy);
 	}
 	
-	
+*/	
 		
 	
 	
@@ -90,7 +90,7 @@ public class Student {
 	
 	
 	
-	/*
+	
 	
 	 String studentNo;
 	 String name;
