@@ -1,6 +1,8 @@
 package ac.yedam.prod.control;
 
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import ac.yedam.prod.InOutService;
@@ -18,52 +20,117 @@ public class ProdProc {
 
 	public void execute() {
 
-		int main = 0;
+		System.out.println("\t\t\t\t\t로그인을 하세요 (아이디:1111 비밀번호:1111)\n");
+
+		loginCheck(); // 로그인체크
 
 		while (true) {
 
-			System.out.println("메뉴를 선택하세요. 1)상품 2)재고 9)종료");
+			int main = 0;
+			int menu = 0;
+			int menu1 = 0;
 
-			main = sc.nextInt();
-			sc.nextLine();
+			while (true) {
+				System.out.println("\n 메뉴를 선택하세요. 1)상품 2)재고 3)만든이 ================== 9)종료");
 
-			if (main == 1) {
-
-				int menu = 0;
-				System.out.println("메뉴를 선택하세요. 1)상품조회 2)상품등록 3)상품변경) 4)상품전체조회 5)종료");
-				menu = sc.nextInt();
-
-				if (menu == 1) { // 상품단건조회
-					getPvo();
-				} else if (menu == 2) { // 상품등록
-					insertPvo();
-				} else if (menu == 3) { // 상품변경
-					updatePvo();
-		
-				} else if (menu == 4) { // 상품 전체조회
-					getPvoList();
+				try {
+					main = sc.nextInt();
+					sc.nextLine();
+				} catch (InputMismatchException e) {
+					System.out.println("없는 메뉴입니다. 다시입력해주세요.");
+					sc.nextLine();
+					continue;
 				}
-			} else if (main == 2) {
+				if (main == 1) {
 
-				int menu1 = 0;
-				System.out.println("메뉴를 선택하세요. 1)입고처리 2)출고처리 3)전체재고 5)상위메뉴");
-				menu1 = sc.nextInt();
+					System.out.println("메뉴를 선택하세요. 1)상품조회 2)상품등록 3)상품변경) 4)상품전체조회 5)상위메뉴");
 
-				if (menu1 == 1) { // 입고처리
+					try {
+						menu = sc.nextInt();
+						sc.nextLine();
+					} catch (InputMismatchException e) {
+						System.out.println("없는 메뉴입니다. 다시입력해주세요.");
+						sc.nextLine();
+						continue;
+					}
 
-				} else if (menu1 == 2) { // 출고처리
+					sc.nextLine();
+					if (menu == 1) { // 상품단건조회
+						getPvo();
+					} else if (menu == 2) { // 상품등록
+						insertPvo();
+					} else if (menu == 3) { // 상품변경
+						updatePvo();
+					} else if (menu == 4) { // 상품 전체조회
+						getPvoList();
+					} else if (menu == 5) { // 상위메뉴
+						continue;
+					}
 
-				} else if (menu1 == 3) { // 전체재고
-					getIOVList();
-				} else if (menu1 == 5) { // 상위메뉴
+				} else if (main == 2) {
+					System.out.println("메뉴를 선택하세요. 1)입고처리 2)출고처리 3)전체재고 5)상위메뉴");
+					try {
+						menu = sc.nextInt();
+						sc.nextLine();
+					} catch (InputMismatchException e) {
+						System.out.println("없는 메뉴입니다. 다시입력해주세요.");
+						sc.nextLine();
+						continue;
+					}
+					sc.nextLine();
 
+					if (menu1 == 1) { // 입고
+						insertIOV();
+					} else if (menu1 == 2) { // 출고
+						insertIOV1();
+					} else if (menu1 == 3) { // 전체재고
+						getIOVList();
+					} else if (menu1 == 5) { // 상위메뉴
+						continue;
+					}
+
+				} else if (main == 3) {
+					System.out.println("======================================================");
+					System.out.println("\t김수호 : 열심히 하겠습니다.");
+					System.out.println("======================================================");
+				} else if (main == 9) { // 종료
+					System.out.println("프로그램을 종료합니다.");
+					System.exit(0);
 				}
 
+				else
+					System.out.println("잘못입력하셨습니다. 다시 입력해주세요.");
+				continue;
 			}
+		}
+	}
 
-			else if (main == 9) { // 종료
-				System.out.println("프로그램을 종료합니다.");
-				System.exit(0);
+	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 로그인 체크
+	public void loginCheck() {
+
+		Map<String, String> map = service.memberInfo();
+
+		while (true) {
+
+			System.out.println("=========ID를 입력하세요=========");
+			String id = sc.nextLine();
+			System.out.println("=======비밀번호를 입력하세요=======");
+			String pw = sc.nextLine();
+
+			if (map.containsKey(id)) {
+
+				if (map.get(id).equals(pw)) {
+					for (int a = 0; a <= 10; a++) {
+						System.out.println("★====★====★ 로그인 완료 ★====★====★");
+					}
+					break;
+
+				} else {
+
+					System.out.println("패스워드가 틀렸습니다. 다시 입력해주세요");
+				}
+			} else {
+				System.out.println("존재하지않는 아이디입니다. 다시입력해주세요.");
 			}
 		}
 	}
@@ -126,6 +193,41 @@ public class ProdProc {
 		for (ProductVo Pvo : list) {
 			System.out.println(Pvo);
 		}
+	}
+
+	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 입고 등록
+	public void insertIOV() {
+
+		System.out.println("1) 입고코드를 입력하세요. ");
+		String code = sc.nextLine();
+
+		System.out.println("2) 입고 수량을 입력하세요. ");
+		int number = sc.nextInt();
+		sc.nextLine();
+
+		System.out.println("3) 입고 날짜를 입력하세요.(예> 2019년 06월 20일");
+		String data = sc.nextLine();
+
+		InOutVo iov = new InOutVo(code, number, data);
+
+		service1.insertIOV(iov);
+	}
+
+	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 출고등록
+	public void insertIOV1() {
+
+		System.out.println("1) 출고코드를 입력하세요 ");
+		String code = sc.nextLine();
+		sc.nextLine();
+		System.out.println("2) 출고 수량을 입력하세요. ");
+		int number = sc.nextInt();
+		sc.nextLine();
+		System.out.println("3) 출고 날짜를 입력하세요.(예> 2019년 06월 20일");
+		String data = sc.nextLine();
+
+		InOutVo iov = new InOutVo(code, number, data);
+
+		service1.insertIOV(iov);
 	}
 
 	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ TXN 상품 전체 조회 4번 입력

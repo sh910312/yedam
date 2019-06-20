@@ -5,25 +5,51 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ac.yedam.prod.ProductVo;
 import employees.common.DAO;
 
 public class ProductDAO {
 
-	// 필요한 필드 선언
 	Connection conn;
 	PreparedStatement pstmt;
 	ResultSet rs;
 
+	
+	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 로그인체크
+		public Map<String, String> memberInfo() {
+
+			conn = DAO.getConnet();
+			String sql = "select id, passwd from login_temp";
+			String id, pw;
+
+			Map<String, String> map = new HashMap<>();
+			try {
+				pstmt = conn.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+
+				while (rs.next()) {
+					id = rs.getString("id");
+					pw = rs.getString("passwd");
+					map.put(id, pw);
+				}
+
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DAO.close(conn);
+			}
+			return map;
+		}
 	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 상품 단건 조회
 	public ProductVo getPvo(String code) {
 
 		conn = DAO.getConnet();
 
-		String sql = "select product_code, product_name, pruduct_price	from yedam_product	where product_code='" + code
-				+ "'";
+		String sql = "select product_code, product_name, pruduct_price	from yedam_product	where product_code='" + code+ "'";
 
 		ProductVo pvo = null;
 

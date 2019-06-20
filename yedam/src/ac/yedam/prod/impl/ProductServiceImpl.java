@@ -1,20 +1,18 @@
 package ac.yedam.prod.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import ac.yedam.prod.ProductService;
 import ac.yedam.prod.ProductVo;
 
 public class ProductServiceImpl implements ProductService {
-
 	private static ProductServiceImpl singLeton = new ProductServiceImpl();
-
 	private ProductServiceImpl() {
 	}
 	public static ProductServiceImpl getInstance() {
 		return singLeton;
 	}
-
 	ProductDAO dao = new ProductDAO();
 
 	@Override
@@ -32,6 +30,11 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<ProductVo> getPvoList() { // 전체조회
 		return dao.getPvoList();
+	}
+	@Override
+	public Map<String, String> memberInfo() {
+		
+		return dao.memberInfo();
 	}
 
 }
