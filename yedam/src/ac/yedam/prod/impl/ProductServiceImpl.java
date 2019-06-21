@@ -16,15 +16,15 @@ public class ProductServiceImpl implements ProductService {
 	ProductDAO dao = new ProductDAO();
 
 	@Override
-	public ProductVo getPvo(String code) { // 한건 검색
+	public ProductVo getPvo(String code) { // 상품 조회
 		return dao.getPvo(code);
 	}
 	@Override
-	public void insertPvo(ProductVo pvo) { // 입력
+	public void insertPvo(ProductVo pvo) { // 상품 등록
 		dao.insertPvo(pvo);
 	}
 	@Override
-	public void updatePvo(ProductVo pvo) { // 수정
+	public void updatePvo(ProductVo pvo) { // 상품 수정
 		dao.updatePvo(pvo);
 	}
 	@Override
@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
 		return dao.getPvoList();
 	}
 	@Override
-	public Map<String, String> memberInfo() {
+	public Map<String, String> memberInfo() { // 로그인
 		
 		return dao.memberInfo();
 	}

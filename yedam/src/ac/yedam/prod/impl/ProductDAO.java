@@ -19,7 +19,7 @@ public class ProductDAO {
 	ResultSet rs;
 
 	
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 로그인체크
+	// 로그인체크
 		public Map<String, String> memberInfo() {
 
 			conn = DAO.getConnet();
@@ -44,7 +44,7 @@ public class ProductDAO {
 			}
 			return map;
 		}
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 상품 단건 조회
+	// 1번 상품조회
 	public ProductVo getPvo(String code) {
 
 		conn = DAO.getConnet();
@@ -74,7 +74,7 @@ public class ProductDAO {
 		return pvo;
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 상품 등록 ProductVo 부분 2번 입력
+	// 2번 상품 등록 
 	public void insertPvo(ProductVo pvo) {
 
 		conn = DAO.getConnet();
@@ -95,7 +95,7 @@ public class ProductDAO {
 
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 상품변경 3번 입력
+	// 3번 상품변경
 
 	public void updatePvo(ProductVo pvo) {
 
@@ -117,7 +117,7 @@ public class ProductDAO {
 
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 상품 전체 조회 4번 입력
+	// 4번 상품 전체 조회
 	public List<ProductVo> getPvoList() {
 
 		conn = DAO.getConnet();

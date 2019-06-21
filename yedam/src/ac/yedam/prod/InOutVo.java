@@ -2,8 +2,8 @@ package ac.yedam.prod;
 
 public class InOutVo {
 
-	private String code; // 코드이름
-	private int number; // 입출고 숫자
+	private String code; // 입출고 코드
+	private int number; // 입출고 수량
 	private String data; // 날짜
 
 	public InOutVo() {

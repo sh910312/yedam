@@ -16,7 +16,7 @@ public class InOutDAO {
 	PreparedStatement pstmt;
 	ResultSet rs;
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 입고
+	// 입고
 	public void insertIOV(InOutVo iov) {
 
 		conn = DAO.getConnet();
@@ -37,7 +37,7 @@ public class InOutDAO {
 
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 출고
+	// 출고
 	public void insertIOV1(InOutVo iov) {
 
 		conn = DAO.getConnet();
@@ -58,7 +58,7 @@ public class InOutDAO {
 
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 재고 총 수량
+	// 재고 총 수량
 	public List<InOutVo> getIOVList() {
 
 		conn = DAO.getConnet();

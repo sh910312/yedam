@@ -11,7 +11,8 @@ public class dfdfd {
 		
 		if(i % 2== 1 ) {
 			
-			if(i>1000) {
+			
+			if(i>10) {
 				break;
 			}
 			sum = sum + i;

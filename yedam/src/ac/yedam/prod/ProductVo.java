@@ -46,6 +46,4 @@ public class ProductVo {
 		return "ProductVo [code=" + code + ", name=" + name + ", price=" + price + "]";
 	}
 
-	
-	
 }

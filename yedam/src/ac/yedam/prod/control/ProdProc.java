@@ -22,7 +22,7 @@ public class ProdProc {
 
 		System.out.println("\t\t\t\t\t로그인을 하세요 (아이디:1111 비밀번호:1111)\n");
 
-		loginCheck(); // 로그인체크
+		loginCheck(); // 로그인 메소드
 
 		while (true) {
 
@@ -37,11 +37,13 @@ public class ProdProc {
 					main = sc.nextInt();
 					sc.nextLine();
 				} catch (InputMismatchException e) {
-					System.out.println("없는 메뉴입니다. 다시입력해주세요.");
+					System.out.println("=====존재하지 않는 메뉴입니다! 다시 입력해주세요 1)상품 2)재고 3)만든이 9)종료=====");
 					sc.nextLine();
 					continue;
 				}
-				if (main == 1) {
+			
+			
+				if (main == 1) { // 1번 메인화면
 
 					System.out.println("메뉴를 선택하세요. 1)상품조회 2)상품등록 3)상품변경) 4)상품전체조회 5)상위메뉴");
 
@@ -49,34 +51,43 @@ public class ProdProc {
 						menu = sc.nextInt();
 						sc.nextLine();
 					} catch (InputMismatchException e) {
-						System.out.println("없는 메뉴입니다. 다시입력해주세요.");
+						System.out.println("=====존재하지 않는 메뉴입니다! 다시 입력해주세요 1)상품조회 2)상품등록 3)상품변경) 4)상품전체조회 5)상위메뉴=====");
 						sc.nextLine();
 						continue;
 					}
-
+				
+			
 					sc.nextLine();
-					if (menu == 1) { // 상품단건조회
+					if (menu == 1) { // 1번 상품조회
 						getPvo();
 					} else if (menu == 2) { // 상품등록
 						insertPvo();
 					} else if (menu == 3) { // 상품변경
 						updatePvo();
-					} else if (menu == 4) { // 상품 전체조회
+					} else if (menu == 4) { // 전상품조회
 						getPvoList();
 					} else if (menu == 5) { // 상위메뉴
 						continue;
 					}
+					
+				}	
+				
+				
+					
+				else if (main == 2) { // 2번 재고
+					System.out.println("메뉴를 선택하세요. 1)입고등록 2)출고등록 3)총수량 5)상위메뉴");
 
-				} else if (main == 2) {
-					System.out.println("메뉴를 선택하세요. 1)입고처리 2)출고처리 3)전체재고 5)상위메뉴");
 					try {
-						menu = sc.nextInt();
+						menu1 = sc.nextInt();
 						sc.nextLine();
 					} catch (InputMismatchException e) {
-						System.out.println("없는 메뉴입니다. 다시입력해주세요.");
+						System.out.println("=====존재하지 않는 메뉴입니다! 다시 입력해주세요 1)입고등록 2)출고등록 3)총수량 5)상위메뉴=====");
 						sc.nextLine();
 						continue;
 					}
+					
+				
+		
 					sc.nextLine();
 
 					if (menu1 == 1) { // 입고
@@ -89,23 +100,21 @@ public class ProdProc {
 						continue;
 					}
 
-				} else if (main == 3) {
+				 else if (main == 3) {
 					System.out.println("======================================================");
-					System.out.println("\t김수호 : 열심히 하겠습니다.");
+					System.out.println("\t김수호 : 열심히합니다");
 					System.out.println("======================================================");
-				} else if (main == 9) { // 종료
+				} else if (main == 9) {
 					System.out.println("프로그램을 종료합니다.");
 					System.exit(0);
+					}
+		
 				}
+				
+			}	
+		}	
 
-				else
-					System.out.println("잘못입력하셨습니다. 다시 입력해주세요.");
-				continue;
-			}
-		}
-	}
-
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 로그인 체크
+	// 로그인
 	public void loginCheck() {
 
 		Map<String, String> map = service.memberInfo();
@@ -135,7 +144,7 @@ public class ProdProc {
 		}
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ product 상품 단건 조회 1번 입력시
+	// 1번 상품조회
 	public void getPvo() {
 
 		System.out.println("조회할 상품을 입력하세요.");
@@ -144,7 +153,7 @@ public class ProdProc {
 		System.out.println(pvo);
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ product 상품 등록 ProductVo 부분 2번 입력
+	// 2번 상품등록
 	public void insertPvo() {
 
 		System.out.println("1) 등록할 상품코드를 입력하세요 ");
@@ -162,7 +171,7 @@ public class ProdProc {
 		service.insertPvo(pvo);
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ product 상품변경 3번 입력
+	// 3번 상품변경
 
 	public void updatePvo() {
 
@@ -186,7 +195,7 @@ public class ProdProc {
 
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ product 상품 전체 조회 4번 입력
+	// 4번 전상품 조회
 	public void getPvoList() {
 
 		List<ProductVo> list = service.getPvoList();
@@ -195,7 +204,7 @@ public class ProdProc {
 		}
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 입고 등록
+	// 입고등록
 	public void insertIOV() {
 
 		System.out.println("1) 입고코드를 입력하세요. ");
@@ -213,7 +222,7 @@ public class ProdProc {
 		service1.insertIOV(iov);
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ 출고등록
+	// 출고등록
 	public void insertIOV1() {
 
 		System.out.println("1) 출고코드를 입력하세요 ");
@@ -230,7 +239,7 @@ public class ProdProc {
 		service1.insertIOV(iov);
 	}
 
-	// ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★ TXN 상품 전체 조회 4번 입력
+	// 재고 총 수량
 	public void getIOVList() {
 
 		List<InOutVo> list = service1.getIOVList();

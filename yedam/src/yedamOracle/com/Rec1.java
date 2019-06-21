@@ -24,4 +24,6 @@ public class Rec1 {
 		return a*b/2;
 	}
 	
+	
+	
 }

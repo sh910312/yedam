@@ -4,15 +4,12 @@ public class Chapter01_1 {
 
 	public static void main(String[] args) {
 
-		int x = 1;
-		int y = 2;
-		int z = 3;
+		for (int a = 0; a < 5; a++) {
+			for (int aa = 0; aa < 4; aa++) {
+				System.out.print("*");
+			}
+			System.out.println();
+		}
 		
-		int result=(x > z) ? x :(y > z) ? y :z;
-        System.out.println(result);
-
-
-
 	}
-
 }
